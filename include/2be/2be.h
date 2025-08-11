@@ -79,8 +79,8 @@
 
 #define TWOB_VER_MAJOR          0
 #define TWOB_VER_MINOR          0
-#define TWOB_VER_PATCH          0
-#define TWOB_VER_ALPHABETA      0x01
+#define TWOB_VER_PATCH          1
+#define TWOB_VER_ALPHABETA      0x41
 
 #define TWOB_VER \
     (0\
@@ -115,6 +115,23 @@
 # endif
 #endif
 
+#if 0
+#elif defined(STLSOFT_NOEXCEPT)
+# define TWOB_NOEXCEPT                                      STLSOFT_NOEXCEPT
+#else
+# if 0
+# elif defined(__cplusplus)
+#  if 0
+#  elif __cplusplus >= 201103L
+#   define TWOB_NOEXCEPT                                    noexcept
+#  else
+#   define TWOB_NOEXCEPT                                    throw()
+#  endif
+# else
+#  define TWOB_NOEXCEPT
+# endif
+#endif
+
 
 /* /////////////////////////////////////////////////////////////////////////
  * types
@@ -135,24 +152,48 @@ typedef uint32_t                                            twob_uint32_t;
  * @see twob_api_init.
  */
 TWOB_CALL(twob_uint32_t)
-twob_api_version(void);
+twob_api_version(void) TWOB_NOEXCEPT;
 
 
 
-/** T.B.C.
+/** Initialises the API.
  *
  */
 TWOB_CALL(int)
 twob_api_init(
     twob_uint32_t   init_flags
 ,   void*           init_param
-);
+) TWOB_NOEXCEPT;
 
-/** T.B.C.
+/** Uninitialises the API.
  *
  */
 TWOB_CALL(void)
-twob_api_uninit(void);
+twob_api_uninit(void) TWOB_NOEXCEPT;
+
+/** Indicates that the given string, when trimmed, is classified as "truthy"
+ * and is deemed as "falsey".
+ */
+TWOB_CALL(int)
+twob_string_is_falsey(
+    char const* s
+) TWOB_NOEXCEPT;
+
+/** Indicates that the given string, when trimmed, is classified as "truthy"
+ * and is deemed as "truey".
+ */
+TWOB_CALL(int)
+twob_string_is_truey(
+    char const* s
+) TWOB_NOEXCEPT;
+
+/** Indicates that the given string, when trimmed, is classified as "truthy"
+ * (and is deemed as either "falsey" or "truey").
+ */
+TWOB_CALL(int)
+twob_string_is_truthy(
+    char const* s
+) TWOB_NOEXCEPT;
 
 
 /* /////////////////////////////////////////////////////////////////////////

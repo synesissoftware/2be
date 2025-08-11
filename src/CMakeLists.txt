@@ -49,6 +49,7 @@ endif(MSVC)
 set(COMMON_IMPLEMENTATION_FILES
 
 	2be.c
+	truthy.c
 )
 
 add_library(core

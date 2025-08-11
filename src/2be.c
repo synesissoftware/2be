@@ -1,11 +1,10 @@
-
 /* /////////////////////////////////////////////////////////////////////////
  * File:    src/2be.c
  *
  * Purpose: Primary implementation file for 2be core library.
  *
- * Created: 23rd November 2024
- * Updated: 23rd November 2024
+ * Created: 11th August 2025
+ * Updated: 11th August 2025
  *
  * Home:    https://github.com/synesissoftware/2be/
  *
@@ -53,6 +52,20 @@
 
 
 /* /////////////////////////////////////////////////////////////////////////
+ * function declarations
+ */
+
+TWOB_CALL(int)
+twob_truthy_init(
+    twob_uint32_t   init_flags
+,   void*           init_param
+) TWOB_NOEXCEPT;
+
+TWOB_CALL(void)
+twob_truthy_uninit(void) TWOB_NOEXCEPT;
+
+
+/* /////////////////////////////////////////////////////////////////////////
  * macros
  */
 
@@ -77,7 +90,7 @@
  */
 
 TWOB_CALL(twob_uint32_t)
-twob_api_version(void)
+twob_api_version(void) TWOB_NOEXCEPT
 {
     return TWOB_VER;
 }
@@ -87,18 +100,22 @@ TWOB_CALL(int)
 twob_api_init(
     twob_uint32_t   init_flags
 ,   void*           init_param
-)
+) TWOB_NOEXCEPT
 {
-    ((void)&init_flags);
-    ((void)&init_param);
+    int const r_truthy = twob_truthy_init(init_flags, init_param);
+
+    if (0 != r_truthy)
+    {
+        return r_truthy;
+    }
 
     return 0;
 }
 
 TWOB_CALL(void)
-twob_api_uninit(void)
+twob_api_uninit(void) TWOB_NOEXCEPT
 {
-
+    twob_truthy_uninit();
 }
 
 
