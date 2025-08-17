@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for 2be
 #
 # Created:  11th August 2025
-# Updated:  11th August 2025
+# Updated:  17th August 2025
 #
 # ######################################################################## #
 
@@ -131,34 +131,37 @@ option(BUILD_EXAMPLES "Build examples" ON)
 #    otherwise
 # 4. we abort
 
-if(DEFINED STLSOFT)
+if(BUILD_TESTING)
 
-	message("-- STLSOFT provided as CMake variable with value '${STLSOFT}'")
+	if(DEFINED STLSOFT)
 
-	set(STLSOFT_INCLUDE_DIR ${STLSOFT}/include)
-elseif(DEFINED ENV{STLSOFT})
+		message("-- STLSOFT provided as CMake variable with value '${STLSOFT}'")
 
-	message("-- STLSOFT provided as environment variable with value '$ENV{STLSOFT}'")
+		set(STLSOFT_INCLUDE_DIR ${STLSOFT}/include)
+	elseif(DEFINED ENV{STLSOFT})
 
-	set(STLSOFT_INCLUDE_DIR $ENV{STLSOFT}/include)
-else()
+		message("-- STLSOFT provided as environment variable with value '$ENV{STLSOFT}'")
 
-	set(STLSoft_REQUIRED_VERSION_ 1.11)
+		set(STLSOFT_INCLUDE_DIR $ENV{STLSOFT}/include)
+	else()
 
-	find_package(STLSoft ${STLSoft_REQUIRED_VERSION_} REQUIRED)
+		set(STLSoft_REQUIRED_VERSION_ 1.11)
 
-	message("-- CMake package STLSoft found (version ${STLSoft_VERSION}; ${STLSoft_REQUIRED_VERSION_} requested)")
-endif()
+		find_package(STLSoft ${STLSoft_REQUIRED_VERSION_} REQUIRED)
 
-if(DEFINED STLSOFT_INCLUDE_DIR)
+		message("-- CMake package STLSoft found (version ${STLSoft_VERSION}; ${STLSoft_REQUIRED_VERSION_} requested)")
+	endif()
 
-	if(BUILD_TESTING)
-		find_package(STLSoft REQUIRED)
+	if(DEFINED STLSOFT_INCLUDE_DIR)
 
-	endif(BUILD_TESTING)
+		if(BUILD_TESTING)
+			find_package(STLSoft REQUIRED)
 
-	include_directories(${STLSOFT_INCLUDE_DIR})
-endif()
+		endif(BUILD_TESTING)
+
+		include_directories(${STLSOFT_INCLUDE_DIR})
+	endif()
+endif(BUILD_TESTING)
 
 
 # ############################
