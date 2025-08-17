@@ -1,5 +1,10 @@
 # **2be** Changes
 
+## 0.0.3-alpha1 - 17th August 2025
+
+* GitHub actions fixes;
+
+
 ## 0.0.2 - 17th August 2025
 
 * simplifying dependencies;
