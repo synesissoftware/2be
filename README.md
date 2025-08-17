@@ -17,6 +17,13 @@ Simple C library determining whether strings indicate truey or falsy values.
 - [Terminology](#terminology)
 - [Installation](#installation)
 - [Components](#components)
+  - [Constants](#constants)
+  - [Enumerations](#enumerations)
+  - [Features](#features)
+  - [Functions](#functions)
+  - [Macros](#macros)
+  - [Structures](#structures)
+  - [(Simple) Types](#simple-types)
 - [Examples](#examples)
 - [Project Information](#project-information)
   - [Where to get help](#where-to-get-help)
@@ -35,29 +42,34 @@ The term "*truthy*" is an unhelpfully overloaded term in the programming world, 
 * "*falsey*" - whether an object can be _deemed to be_ interpretable as being false;
 * "*truey*" - whether an object can be _deemed to be_ interpretable as being true;
 
-For example, consider the following **Go** program:
+For example, consider the following **C** program:
 
 ```C
 #include <2be/2be.h>
 
-char const* s1 = "no";
-char const* s2 = "True";
-char const* s3 = "orange";
+int main()
+{
+  char const* s1 = "no";
+  char const* s2 = "True";
+  char const* s3 = "orange";
 
-// "no" is validly truthy, and is falsey
-twob_string_is_falsey((s1) // true
-twob_string_is_truey(s1)   // false
-twob_string_is_truthy(s1)  // true
+  // "no" is validly truthy, and is falsey
+  twob_string_is_falsey((s1) // !0
+  twob_string_is_truey(s1)   // 0
+  twob_string_is_truthy(s1)  // !0
 
-// "True" is validly truthy, and is truey
-twob_string_is_falsey((s2) // false
-twob_string_is_truey(s2)   // true
-twob_string_is_truthy(s2)  // true
+  // "True" is validly truthy, and is truey
+  twob_string_is_falsey((s2) // 0
+  twob_string_is_truey(s2)   // !0
+  twob_string_is_truthy(s2)  // !0
 
-// "orange" is not validly truthy, and is neither falsey nor truey
-twob_string_is_falsey((s3) // false
-twob_string_is_truey(s3)   // false
-twob_string_is_truthy(s3)  // false
+  // "orange" is not validly truthy, and is neither falsey nor truey
+  twob_string_is_falsey((s3) // 0
+  twob_string_is_truey(s3)   // 0
+  twob_string_is_truthy(s3)  // 0
+
+  return 0;
+}
 ```
 
 ## Installation
@@ -67,7 +79,86 @@ T.B.C.
 
 ## Components
 
-T.B.C.
+### Constants
+
+No public constants are defined at this time.
+
+
+### Enumerations
+
+No public enumerations are defined at this time.
+
+
+### Features
+
+No public crate-specific features are defined at this time.
+
+
+### Functions
+
+The following public functions are defined in the current version:
+
+```C
+/** Obtains the Diagnosticism version (at time of compilation)
+ *
+ * @note Can be called without having initialised the API.
+ */
+twob_uint32_t
+twob_api_version(void);
+
+/** Initialises the API.
+ */
+int
+twob_api_init(
+    twob_uint32_t   init_flags
+,   void*           init_param
+);
+/** Uninitialises the API.
+ */
+void
+twob_api_uninit(void);
+
+/** Indicates that the given string, when trimmed, is classified as "truthy"
+ * and is deemed as "falsey".
+ */
+int
+twob_string_is_falsey(
+    char const* s
+);
+/** Indicates that the given string, when trimmed, is classified as "truthy"
+ * and is deemed as "truey".
+ */
+int
+twob_string_is_truey(
+    char const* s
+);
+/** Indicates that the given string, when trimmed, is classified as "truthy"
+ * (and is deemed as either "falsey" or "truey").
+ */
+int
+twob_string_is_truthy(
+    char const* s
+);
+```
+
+
+### Macros
+
+No public macros are defined at this time.
+
+
+### Structures
+
+No public structures are defined at this time.
+
+
+### (Simple) Types
+
+The following public types are defined in the current version:
+
+```C
+typedef uint32_t twob_uint32_t;
+```
 
 
 ## Examples
