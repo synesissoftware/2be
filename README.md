@@ -1,6 +1,7 @@
 # to-be <!-- omit in toc -->
 
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)
+[![C/C++ CI](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml)
 
 Simple C library determining whether strings indicate truey or falsy values.
 
