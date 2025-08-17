@@ -80,7 +80,7 @@
 #define TWOB_VER_MAJOR          0
 #define TWOB_VER_MINOR          0
 #define TWOB_VER_PATCH          3
-#define TWOB_VER_ALPHABETA      0x41
+#define TWOB_VER_ALPHABETA      0xFF
 
 #define TWOB_VER \
     (0\
