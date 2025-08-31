@@ -1,6 +1,9 @@
 # to-be <!-- omit in toc -->
 
+![Language](https://img.shields.io/badge/C-00599C?style=flat&logo=c%2B%2B&logoColor=white)
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)
+[![GitHub release](https://img.shields.io/github/v/release/synesissoftware/2be.svg)](https://github.com/synesissoftware/2be/releases/latest)
+[![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/2be)](https://github.com/synesissoftware/2be/commits/master)
 [![C/C++ CI](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml)
 
 Simple C library determining whether strings indicate truey or falsy values.
