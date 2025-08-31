@@ -195,7 +195,7 @@ No dependencies
 
 * [**py2be**](https://github.com/synesissoftware/py2be) (**Python**);
 * [**to-be.Go**](https://github.com/synesissoftware/to-be) (**to-be.Go**);
-* [**to-be.Ruby**](https://github.com/synesissoftware/to-be.Ruby);
+* [**to_be.Ruby**](https://github.com/synesissoftware/to_be.Ruby);
 * [**to-be.Rust**](https://github.com/synesissoftware/to-be.Rust);
 
 
