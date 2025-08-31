@@ -77,7 +77,23 @@ int main()
 
 ## Installation
 
-T.B.C.
+**CMake** configuration files are provided, along with some helper scripts.
+
+The following steps are suggested for a minimal build/installation:
+
+1. Perform the CMake configuration
+    ```bash
+    export SIS_CMAKE_BUILD_DIR=/tmp/sis/2be
+    ./prepare_cmake.sh -E -T
+    ```
+2. Build the library
+    ```bash
+    ./build_cmake.sh
+    ```
+3. Install
+    ```bash
+    sudo cmake --install ${SIS_CMAKE_BUILD_DIR:-./_build} --config Release | grep -i -v up-to-date
+    ```
 
 
 ## Components
