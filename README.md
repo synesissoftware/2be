@@ -1,6 +1,9 @@
 # to-be <!-- omit in toc -->
 
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)
+![Language](https://img.shields.io/badge/C-00599C?style=flat&logo=c%2B%2B&logoColor=white)
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+[![GitHub release](https://img.shields.io/github/v/release/synesissoftware/2be.svg)](https://github.com/synesissoftware/2be/releases/latest)
+[![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/2be)](https://github.com/synesissoftware/2be/commits/master)
 [![C/C++ CI](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml)
 
 Simple C library determining whether strings indicate truey or falsy values.
@@ -74,7 +77,23 @@ int main()
 
 ## Installation
 
-T.B.C.
+**CMake** configuration files are provided, along with some helper scripts.
+
+The following steps are suggested for a minimal build/installation:
+
+1. Perform the CMake configuration
+    ```bash
+    export SIS_CMAKE_BUILD_DIR=/tmp/sis/2be
+    ./prepare_cmake.sh -E -T
+    ```
+2. Build the library
+    ```bash
+    ./build_cmake.sh
+    ```
+3. Install
+    ```bash
+    sudo cmake --install ${SIS_CMAKE_BUILD_DIR:-./_build} --config Release | grep -i -v up-to-date
+    ```
 
 
 ## Components
@@ -192,7 +211,7 @@ No dependencies
 
 * [**py2be**](https://github.com/synesissoftware/py2be) (**Python**);
 * [**to-be.Go**](https://github.com/synesissoftware/to-be) (**to-be.Go**);
-* [**to-be.Ruby**](https://github.com/synesissoftware/to-be.Ruby);
+* [**to_be.Ruby**](https://github.com/synesissoftware/to_be.Ruby);
 * [**to-be.Rust**](https://github.com/synesissoftware/to-be.Rust);
 
 
