@@ -4,7 +4,7 @@
  * Purpose: Main header file for Diagnosticm (C-API).
  *
  * Created: 11th August 2025
- * Updated: 17th August 2025
+ * Updated: 1st September 2025
  *
  * Home:    https://github.com/synesissoftware/2be/
  *
@@ -50,8 +50,8 @@
 #ifndef TWOB_DOCUMENTATION_SKIP_SECTION
 # define TWOB_VER_TWOB_H_TWOB_MAJOR  0
 # define TWOB_VER_TWOB_H_TWOB_MINOR  0
-# define TWOB_VER_TWOB_H_TWOB_PATCH  8
-# define TWOB_VER_TWOB_H_TWOB_EDIT   9
+# define TWOB_VER_TWOB_H_TWOB_PATCH  9
+# define TWOB_VER_TWOB_H_TWOB_EDIT   10
 #endif /* !TWOB_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -79,7 +79,7 @@
 
 #define TWOB_VER_MAJOR          0
 #define TWOB_VER_MINOR          0
-#define TWOB_VER_PATCH          3
+#define TWOB_VER_PATCH          4
 #define TWOB_VER_ALPHABETA      0xFF
 
 #define TWOB_VER \

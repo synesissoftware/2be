@@ -1,5 +1,13 @@
 # **2be** Changes
 
+## 0.0.4 - 1st September 2025
+
+* .gitattributes;
+* badges;
+* links;
+* documentation;
+
+
 ## 0.0.3 - 17th August 2025
 
 * release;
