@@ -27,10 +27,9 @@ while [[ $# -gt 0 ]]; do
       ;;
     --help)
 
+      [ -f "$Dir/.sis/script_info_lines.txt" ] && cat "$Dir/.sis/script_info_lines.txt"
       cat << EOF
-Simple C library determining whether strings indicate truey or falsy values.
-Copyright (c) 2025, Matthew Wilson and Synesis Information Systems
-Runs all (matching) example programs
+Runs all example programs
 
 $ScriptPath [ ... flags/options ... ]
 
@@ -106,7 +105,7 @@ if [ $status -eq 0 ]; then
     echo "Running all example programs"
   fi
 
-  for f in $(find $CMakeDir -type f '(' -name 'example?c*' -o -name 'example?cpp*' ')' -exec test -x {} \; -print)
+  for f in $(find $CMakeDir/examples -type f -exec test -x {} \; -print)
   do
 
     if [ $ListOnly -ne 0 ]; then
@@ -119,7 +118,6 @@ if [ $status -eq 0 ]; then
     echo
     echo "executing $f:"
 
-    # NOTE: we do not break on fail because these tests are not always intended to succeed
     $f
   done
 fi

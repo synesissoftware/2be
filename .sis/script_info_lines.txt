@@ -1,0 +1,2 @@
+Simple C library determining whether strings indicate truey or falsy values.
+Copyright (c) 2025, Matthew Wilson and Synesis Information Systems

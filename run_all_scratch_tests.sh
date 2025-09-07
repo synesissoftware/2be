@@ -33,10 +33,9 @@ while [[ $# -gt 0 ]]; do
       ;;
     --help)
 
+      [ -f "$Dir/.sis/script_info_lines.txt" ] && cat "$Dir/.sis/script_info_lines.txt"
       cat << EOF
-Simple C library determining whether strings indicate truey or falsy values.
-Copyright (c) 2025, Matthew Wilson and Synesis Information Systems
-Runs all (matching) scratch test programs
+Runs all (matching) performance-test and scratch-test programs
 
 $ScriptPath [ ... flags/options ... ]
 
