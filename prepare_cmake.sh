@@ -4,13 +4,20 @@ ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
 Basename=$(basename "$ScriptPath")
 CMakeDir=${SIS_CMAKE_BUILD_DIR:-$Dir/_build}
-[[ -n "$MSYSTEM" ]] && DefaultMakeCmd=mingw32-make.exe || DefaultMakeCmd=make
+if [[ -n "$MSYSTEM" ]]; then
+
+  DefaultMakeCmd=mingw32-make.exe
+  MinGW=1
+else
+
+  DefaultMakeCmd=make
+fi
 MakeCmd=${SIS_CMAKE_MAKE_COMMAND:-${SIS_CMAKE_COMMAND:-$DefaultMakeCmd}}
 
 Configuration=Release
 ExamplesDisabled=0
 MSVC_MT=0
-MinGW=0
+MinGW="${MinGW:=0}"
 RunMake=0
 STLSoftDirGiven=
 TestingDisabled=0
@@ -30,7 +37,6 @@ while [[ $# -gt 0 ]]; do
     --debug-configuration|-d)
 
       Configuration=Debug
-
       ;;
     --disable-examples|-E)
 
@@ -59,9 +65,8 @@ while [[ $# -gt 0 ]]; do
       ;;
     --help)
 
+      [ -f "$Dir/.sis/script_info_lines.txt" ] && cat "$Dir/.sis/script_info_lines.txt"
       cat << EOF
-Simple C library determining whether strings indicate truey or falsy values.
-Copyright (c) 2025, Matthew Wilson and Synesis Information Systems
 Creates/reinitialises the CMake build script(s)
 
 $ScriptPath [ ... flags/options ... ]
@@ -167,6 +172,7 @@ else
     -B $CMakeDir \
     || (cd ->/dev/null ; exit 1)
 fi
+
 
 status=0
 

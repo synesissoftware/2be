@@ -1,16 +1,22 @@
-
 *.c linguist-language=C
 *.h linguist-language=C
 
-*.cpp linguist-detectable=false
-*.hpp linguist-detectable=false
-*.cxx linguist-detectable=false
-*.hxx linguist-detectable=false
+*.cpp linguist-language=C++
+*.hpp linguist-language=C++
+*.cxx linguist-language=C++
+*.hxx linguist-language=C++
 
-*.cmake linguist-detectable=CMake
+*.cmake linguist-language=CMake
+
+*.cmd linguist-detectable=false
 *.html linguist-detectable=false
 *.sh linguist-detectable=false
+*.dsp linguist-detectable=false
+*.dsw linguist-detectable=false
+*.sln linguist-detectable=false
 *.vimrc linguist-detectable=false
+*.vcxproj linguist-detectable=false
 
-makefile linguist-detectable=true
-CMakeLists.txt linguist-detectable=CMake
+CMakeLists.txt linguist-language=CMake
+makefile linguist-detectable=false
+
