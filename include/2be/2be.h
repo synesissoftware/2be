@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:    diagnosticm/diagnosticm.h
+ * File:    2be/2be.h
  *
- * Purpose: Main header file for Diagnosticm (C-API).
+ * Purpose: Main header file for 2be (C-API).
  *
  * Created: 11th August 2025
- * Updated: 7th September 2025
+ * Updated: 6th August 2026
  *
  * Home:    https://github.com/synesissoftware/2be/
  *
- * Copyright (c) 2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2025-2026, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -50,8 +50,8 @@
 #ifndef TWOB_DOCUMENTATION_SKIP_SECTION
 # define TWOB_VER_TWOB_H_TWOB_MAJOR  0
 # define TWOB_VER_TWOB_H_TWOB_MINOR  0
-# define TWOB_VER_TWOB_H_TWOB_PATCH  10
-# define TWOB_VER_TWOB_H_TWOB_EDIT   11
+# define TWOB_VER_TWOB_H_TWOB_PATCH  11
+# define TWOB_VER_TWOB_H_TWOB_EDIT   12
 #endif /* !TWOB_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -79,7 +79,7 @@
 
 #define TWOB_VER_MAJOR          0
 #define TWOB_VER_MINOR          1
-#define TWOB_VER_PATCH          0
+#define TWOB_VER_PATCH          1
 #define TWOB_VER_ALPHABETA      0xFF
 
 #define TWOB_VER \
