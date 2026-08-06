@@ -1,8 +1,16 @@
-# **2be** Changes
+# 2be - CHANGES <!-- omit in toc -->
+
+
+## 0.1.0 - 7th September 2025
+
+* Canonicalising with other SIS projects (CMake configuration, helper scripts, **`.sis/script_info_lines.txt`**);
+* **`.gitattributes`**; CMake polishing; **LICENSE** added;
+* **`run_all_unit_tests.cmd`** added;
+
 
 ## 0.0.4 - 1st September 2025
 
-* .gitattributes;
+* **`.gitattributes`**;
 * badges;
 * links;
 * documentation;
