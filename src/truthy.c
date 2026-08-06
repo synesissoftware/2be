@@ -1,14 +1,14 @@
 /* /////////////////////////////////////////////////////////////////////////
- * File:    src/2be.c
+ * File:    src/truthy.c
  *
- * Purpose: Primary implementation file for 2be core library.
+ * Purpose: Implementation of truthy/falsy string classification for 2be.
  *
  * Created: 11th August 2025
- * Updated: 11th August 2025
+ * Updated: 6th August 2026
  *
  * Home:    https://github.com/synesissoftware/2be/
  *
- * Copyright (c) 2025, Matthew Wilson and Synesis Information Systems
+ * Copyright (c) 2025-2026, Matthew Wilson and Synesis Information Systems
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -53,6 +53,26 @@
 #include <assert.h>
 #include <ctype.h>
 #include <string.h>
+#if 0
+#elif defined(MSC_VER)
+
+ /* POSIX / BSD / GNU: strncasecmp() lives in <strings.h>. */
+# include <strings.h>
+#endif
+
+
+/* /////////////////////////////////////////////////////////////////////////
+ * compatibility
+ */
+
+#if 0
+#elif defined(MSC_VER)
+
+ /* Visual C++ provides _strnicmp(), not POSIX strncasecmp(). */
+# ifndef strncasecmp
+#  define strncasecmp                                       _strnicmp
+# endif
+#endif /* compiler */
 
 
 /* /////////////////////////////////////////////////////////////////////////
