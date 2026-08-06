@@ -4,7 +4,7 @@
 [![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![GitHub release](https://img.shields.io/github/v/release/synesissoftware/2be.svg)](https://github.com/synesissoftware/2be/releases/latest)
 [![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/2be)](https://github.com/synesissoftware/2be/commits/master)
-[![C/C++ CI](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml/badge.svg)](https://github.com/synesissoftware/2be/actions/workflows/c-cpp.yml)
+[![C/C++ CI](https://github.com/synesissoftware/2be/actions/workflows/ci.yml/badge.svg)](https://github.com/synesissoftware/2be/actions/workflows/ci.yml)
 
 Simple C library determining whether strings indicate truey or falsy values.
 
