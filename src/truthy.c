@@ -54,11 +54,11 @@
 #include <ctype.h>
 #include <string.h>
 #if 0
-#elif defined(MSC_VER)
-
+#elif defined(_MSC_VER)
+#else /* ? compiler */
  /* POSIX / BSD / GNU: strncasecmp() lives in <strings.h>. */
 # include <strings.h>
-#endif
+#endif /* compiler */
 
 
 /* /////////////////////////////////////////////////////////////////////////
@@ -66,14 +66,13 @@
  */
 
 #if 0
-#elif defined(MSC_VER)
+#elif defined(_MSC_VER)
 
  /* Visual C++ provides _strnicmp(), not POSIX strncasecmp(). */
 # ifndef strncasecmp
 #  define strncasecmp                                       _strnicmp
 # endif
 #endif /* compiler */
-
 
 /* /////////////////////////////////////////////////////////////////////////
  * macros
