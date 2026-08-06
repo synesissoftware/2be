@@ -1,7 +1,7 @@
 # 2be - CHANGES <!-- omit in toc -->
 
 
-## 0.1.1 - 6th August 2026
+## 0.1.1 - 7th August 2026
 
 * **MSVC** compatibility: map POSIX `strncasecmp()` to `_strnicmp()` in **`src/truthy.c`** (and include **`<strings.h>`** on non-MSVC platforms);
 * Modular GitHub Actions CI (**`ci.yml`** / **`ci-cell.yml`**) covering Linux (**Clang**/**GCC**/**TinyCC**), macOS (**Clang**), and Windows (**cl** / **MinGW**), with dependency install, unit tests, and install-verify; **TinyCC** is library build/install only (**`-T`** / no unit tests) until **STLSoft** / **xTests** support it (see **TODO.md**);
