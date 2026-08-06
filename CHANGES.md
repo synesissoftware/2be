@@ -4,7 +4,7 @@
 ## 0.1.1 - 6th August 2026
 
 * **MSVC** compatibility: map POSIX `strncasecmp()` to `_strnicmp()` in **`src/truthy.c`** (and include **`<strings.h>`** on non-MSVC platforms);
-* Modular GitHub Actions CI (**`ci.yml`** / **`ci-cell.yml`**) covering Linux (**Clang**/**GCC**), macOS (**Clang**), and Windows (**cl** / **MinGW**), with dependency install, unit tests, and install-verify;
+* Modular GitHub Actions CI (**`ci.yml`** / **`ci-cell.yml`**) covering Linux (**Clang**/**GCC**/**TinyCC**), macOS (**Clang**), and Windows (**cl** / **MinGW**), with dependency install, unit tests, and install-verify; **TinyCC** is library build/install only (**`-T`** / no unit tests) until **STLSoft** / **xTests** support it (see **TODO.md**);
 * Helper-script canonicalisation: **`.sis/project_name.txt`**; coloured **`run_all_*.sh`** runners; **`-v`** / **`--verbose`**; **`--unit-only`** / **`--component-only`**; stricter **`--no-make`** guarding; **`run_all_unit_tests.cmd`** parity;
 * Corrected stale file headers in **`include/2be/2be.h`** and **`src/truthy.c`**;
 

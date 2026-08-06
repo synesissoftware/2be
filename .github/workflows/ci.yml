@@ -30,6 +30,10 @@ jobs:
             os: ubuntu-latest
             c_compiler: gcc
             cpp_compiler: g++
+          - id: linux-tcc
+            os: ubuntu-latest
+            c_compiler: tcc
+            cpp_compiler: g++
           - id: macos-clang
             os: macos-latest
             c_compiler: clang
@@ -49,4 +53,6 @@ jobs:
       c-compiler: ${{ matrix.c_compiler }}
       cpp-compiler: ${{ matrix.cpp_compiler }}
       build-type: Release
-      run-tests: true
+      # TinyCC: library build/install only (-T). Re-enable when STLSoft/xTests
+      # support TinyCC (see TODO.md).
+      run-tests: ${{ matrix.id != 'linux-tcc' }}

@@ -36,6 +36,10 @@ jobs:
         if: runner.os == 'Linux' && inputs.c-compiler == 'clang'
         run: sudo apt-get update && sudo apt-get install -y clang
 
+      - name: Install TinyCC (Ubuntu)
+        if: runner.os == 'Linux' && inputs.c-compiler == 'tcc'
+        run: sudo apt-get update && sudo apt-get install -y tcc
+
       - name: Setup MSYS2 MinGW
         if: runner.os == 'Windows' && inputs.c-compiler == 'mingw'
         uses: msys2/setup-msys2@v2
@@ -48,6 +52,7 @@ jobs:
             mingw-w64-x86_64-make
 
       - name: Install dependencies
+        if: inputs.run-tests
         shell: bash
         run: |
           set -euxo pipefail
@@ -126,6 +131,13 @@ jobs:
           set -euo pipefail
           DEPS="${{ env.SIS_DEPS }}"
 
+          if [ "${{ inputs.run-tests }}" = "true" ]; then
+            BuildTesting=ON
+          else
+            # Equivalent to prepare_cmake.sh -T
+            BuildTesting=OFF
+          fi
+
           if [ "${{ inputs.c-compiler }}" = "mingw" ]; then
             export PATH="/mingw64/bin:$PATH"
           fi
@@ -135,7 +147,7 @@ jobs:
               -DCMAKE_DISABLE_FIND_PACKAGE_MFC=TRUE \
               -DCMAKE_PREFIX_PATH="$DEPS" \
               -DBUILD_EXAMPLES=OFF \
-              -DBUILD_TESTING=ON
+              -DBUILD_TESTING=$BuildTesting
           elif [ "${{ inputs.c-compiler }}" = "mingw" ]; then
             cmake -B build -G "MinGW Makefiles" \
               -DCMAKE_BUILD_TYPE="${{ inputs.build-type }}" \
@@ -143,7 +155,7 @@ jobs:
               -DCMAKE_CXX_COMPILER=g++ \
               -DCMAKE_PREFIX_PATH="$DEPS" \
               -DBUILD_EXAMPLES=OFF \
-              -DBUILD_TESTING=ON
+              -DBUILD_TESTING=$BuildTesting
           else
             cmake -B build -S . \
               -DCMAKE_BUILD_TYPE="${{ inputs.build-type }}" \
@@ -151,7 +163,7 @@ jobs:
               -DCMAKE_CXX_COMPILER="${{ inputs.cpp-compiler }}" \
               -DCMAKE_PREFIX_PATH="$DEPS" \
               -DBUILD_EXAMPLES=OFF \
-              -DBUILD_TESTING=ON
+              -DBUILD_TESTING=$BuildTesting
           fi
 
       - name: Build
