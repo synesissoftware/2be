@@ -1,22 +1,26 @@
 @echo off
 
-SETLOCAL
+SETLOCAL ENABLEEXTENSIONS ENABLEDELAYEDEXPANSION
 
 SET SCRIPT_DIRECTORY=%~dp0
 SET SCRIPT_PATH_DOC=%~n0[%~x0]
 IF DEFINED SIS_CMAKE_BUILD_DIR (
 
-    SET CMAKE_DIR=%SIS_CMAKE_BUILD_DIR%
+	SET "CMAKE_DIR=%SIS_CMAKE_BUILD_DIR%"
 ) ELSE (
 
-    SET CMAKE_DIR=%SCRIPT_DIRECTORY%_build
+	SET "CMAKE_DIR=%SCRIPT_DIRECTORY%_build"
 )
+
+SET ListOnly=0
+SET Verbose=0
+SET status=0
 
 FOR %%a IN (%*) DO (
 	IF /I {--help}=={%%a} (
 		IF EXIST "%SCRIPT_DIRECTORY%.sis\script_info_lines.txt" (
 
-					type "%SCRIPT_DIRECTORY%.sis\script_info_lines.txt"
+			type "%SCRIPT_DIRECTORY%.sis\script_info_lines.txt"
 		)
 		ECHO ^
 
@@ -34,6 +38,30 @@ Flags/options: ^
 
 ^
 
+    -l ^
+
+    --list-only ^
+
+        lists the target programs but does not execute them ^
+
+^
+
+    -M ^
+
+    --no-make ^
+
+        accepted for parity with the .sh script ^(build is not invoked^) ^
+
+^
+
+    -v ^
+
+    --verbose ^
+
+        lists each test program before executing it ^
+
+^
+
     standard flags: ^
 
 ^
@@ -44,25 +72,70 @@ Flags/options: ^
 
 
 		EXIT /B 0
+	) ELSE IF /I {-l}=={%%a} (
+		SET ListOnly=1
+	) ELSE IF /I {--list-only}=={%%a} (
+		SET ListOnly=1
+	) ELSE IF /I {-M}=={%%a} (
+		REM no-op: this .cmd never invokes the build
+	) ELSE IF /I {--no-make}=={%%a} (
+		REM no-op: this .cmd never invokes the build
+	) ELSE IF /I {-v}=={%%a} (
+		SET Verbose=1
+	) ELSE IF /I {--verbose}=={%%a} (
+		SET Verbose=1
 	) ELSE (
-		ECHO "%SCRIPT_DIRECTORY%: unrecognised argument '%%a'; use --help for usage" 1>&2
+		ECHO %SCRIPT_PATH_DOC%: unrecognised argument '%%a'; use --help for usage 1>&2
 
 		EXIT /B 1
 	)
 )
 
-if NOT EXIST "%CMAKE_DIR%" (
+IF NOT EXIST "%CMAKE_DIR%" (
 
-    ECHO "CMake build directory '%CMAKE_DIR%' does not exist"
+	ECHO %SCRIPT_PATH_DOC%: CMake build directory '%CMAKE_DIR%' does not exist 1>&2
 
-    EXIT /B 1
+	EXIT /B 1
 )
 
-FOR /F "usebackq" %%f IN (`DIR /A:-D /B /S %CMAKE_DIR% ^| FINDSTR /I test.*unit.*\.exe$`) DO (
-	ECHO .
-	ECHO executing %%f
-	%%f
+SET "ProjectName="
+FOR /F "usebackq delims=" %%p IN ("%SCRIPT_DIRECTORY%.sis\project_name.txt") DO SET "ProjectName=%%p"
+
+IF NOT DEFINED ProjectName (
+
+	ECHO %SCRIPT_PATH_DOC%: could not read project name from .sis\project_name.txt 1>&2
+
+	EXIT /B 1
 )
 
-ENDLOCAL
+IF !ListOnly! EQU 1 (
 
+	ECHO Listing all %ProjectName% component and unit test programs
+) ELSE (
+
+	ECHO Running all %ProjectName% component and unit test programs
+)
+
+FOR /F "usebackq delims=" %%f IN (`DIR /A:-D /B /S "%CMAKE_DIR%\*.exe" 2^>NUL ^| FINDSTR /I /R "test\..*unit\..*\.exe$ test_unit.*\.exe$ test\..*component\..*\.exe$ test_component.*\.exe$"`) DO (
+	IF !ListOnly! EQU 1 (
+
+		ECHO would execute %%f:
+	) ELSE (
+
+		IF !Verbose! EQU 1 (
+
+			ECHO executing %%f:
+		)
+
+		"%%f"
+		IF ERRORLEVEL 1 (
+
+			SET status=1
+
+			GOTO :done
+		)
+	)
+)
+
+:done
+EXIT /B !status!
