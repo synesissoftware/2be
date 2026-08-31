@@ -1,4 +1,4 @@
-# **2be** - News <!-- omit in toc -->
+# 2be - News <!-- omit in toc -->
 
 
 ----

@@ -1,4 +1,4 @@
-# 2be - CHANGES <!-- omit in toc -->
+# 2be - Changes <!-- omit in toc -->
 
 
 ## 0.1.1 - 7th August 2026

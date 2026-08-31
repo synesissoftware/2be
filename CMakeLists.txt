@@ -30,7 +30,7 @@ set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 # project
 
 project(2be
-	DESCRIPTION "2be is a simple C library determining whether strings indicate truey or falsy values."
+	DESCRIPTION "2be is a simple C library determining whether strings indicate truey or falsey values."
 	HOMEPAGE_URL "https://github.com/synesissoftware/2be"
 	LANGUAGES C CXX
 )

@@ -1,7 +1,7 @@
 /* /////////////////////////////////////////////////////////////////////////
  * File:    src/truthy.c
  *
- * Purpose: Implementation of truthy/falsy string classification for 2be.
+ * Purpose: Implementation of truthy/falsey string classification for 2be.
  *
  * Created: 11th August 2025
  * Updated: 6th August 2026

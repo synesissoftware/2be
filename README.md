@@ -6,12 +6,12 @@
 [![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/2be)](https://github.com/synesissoftware/2be/commits/master)
 [![C/C++ CI](https://github.com/synesissoftware/2be/actions/workflows/ci.yml/badge.svg)](https://github.com/synesissoftware/2be/actions/workflows/ci.yml)
 
-Simple C library determining whether strings indicate truey or falsy values.
+Simple C library determining whether strings indicate truey or falsey values.
 
 
 ## Introduction
 
-**to-be** is a library providing facilities for determine whether the truthyness of strings. It implemented in several languages: **2be** is the **C** implementation.
+**to-be** is a library providing facilities for determine whether the truthiness of strings. It implemented in several languages: **2be** is the **C** implementation.
 
 
 ## Table of Contents <!-- omit in toc -->
@@ -39,7 +39,7 @@ Simple C library determining whether strings indicate truey or falsy values.
 
 ## Terminology
 
-The term "*truthy*" is an unhelpfully overloaded term in the programming world, insofar as it is used to refer to the notion of "truthyness" - whether something can be _deemed to be_ interpretable as truth - and also the true side of that interpretation. In this library, the former interpretation is used, leaving us with the following terms:
+The term "*truthy*" is an unhelpfully overloaded term in the programming world, insofar as it is used to refer to the notion of "truthiness" - whether something can be _deemed to be_ interpretable as truth - and also the true side of that interpretation. In this library, the former interpretation is used, leaving us with the following terms:
 
 * "*truthy*" - whether something can be can be _deemed to be_ interpretable as having truth;
 * "*falsey*" - whether an object can be _deemed to be_ interpretable as being false;
