@@ -190,14 +190,17 @@ jobs:
             export PATH="/mingw64/bin:$PATH"
           fi
           export SIS_CMAKE_BUILD_DIR="${{ github.workspace }}/build"
+          # Gold Bash runners take -M/--no-make. They do not take -v.
+          # Gold .cmd runners do not build, and accept only --help and
+          # --unit-only.
           if [ "${{ runner.os }}" = "Windows" ]; then
             if [ -f run_all_unit_tests.cmd ]; then
-              cmd.exe //c "run_all_unit_tests.cmd -M -v"
+              cmd.exe //c "run_all_unit_tests.cmd"
             else
-              ./run_all_unit_tests.sh -M -v
+              ./run_all_unit_tests.sh -M
             fi
           else
-            ./run_all_unit_tests.sh -M -v
+            ./run_all_unit_tests.sh -M
           fi
 
       - name: Install and verify
