@@ -4,7 +4,7 @@
  * Purpose: Main header file for 2be (C-API).
  *
  * Created: 11th August 2025
- * Updated: 9th October 2026
+ * Updated: 14th October 2026
  *
  * Home:    https://github.com/synesissoftware/2be/
  *
@@ -50,8 +50,8 @@
 #ifndef TWOB_DOCUMENTATION_SKIP_SECTION
 # define TWOB_VER_TWOB_H_TWOB_MAJOR  0
 # define TWOB_VER_TWOB_H_TWOB_MINOR  0
-# define TWOB_VER_TWOB_H_TWOB_PATCH  12
-# define TWOB_VER_TWOB_H_TWOB_EDIT   13
+# define TWOB_VER_TWOB_H_TWOB_PATCH  13
+# define TWOB_VER_TWOB_H_TWOB_EDIT   14
 #endif /* !TWOB_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -72,6 +72,11 @@
  *
  * The patch number of the 2be library
  *
+ * \def TWOB_VER_RELSTATUS
+ *
+ * The release status of the 2be library, in the range 1-0xFE for
+ * prerelease versions, and 0xFF for a released version
+ *
  * \def TWOB_VER
  *
  * The composite version of the 2be library
@@ -79,16 +84,21 @@
 
 #define TWOB_VER_MAJOR          0
 #define TWOB_VER_MINOR          1
-#define TWOB_VER_PATCH          2
-#define TWOB_VER_ALPHABETA      0xFF
+#define TWOB_VER_PATCH          3
+#define TWOB_VER_RELSTATUS      0xFF
 
 #define TWOB_VER \
     (0\
         |   (   TWOB_VER_MAJOR       << 24   ) \
         |   (   TWOB_VER_MINOR       << 16   ) \
         |   (   TWOB_VER_PATCH       <<  8   ) \
-        |   (   TWOB_VER_ALPHABETA   <<  0   ) \
+        |   (   TWOB_VER_RELSTATUS   <<  0   ) \
     )
+
+#ifndef TWOB_DOCUMENTATION_SKIP_SECTION
+# define TWOB_VER_ALPHABETA     TWOB_VER_RELSTATUS
+# define TWOB_VER_REVISION      TWOB_VER_PATCH
+#endif /* !TWOB_DOCUMENTATION_SKIP_SECTION */
 
 
 /* /////////////////////////////////////////////////////////////////////////
