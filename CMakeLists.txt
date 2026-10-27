@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for 2be
 #
 # Created:  11th August 2025
-# Updated:  7th September 2025
+# Updated:  26th October 2026
 #
 # ######################################################################## #
 
@@ -155,11 +155,17 @@ if(BUILD_TESTING)
 	if(DEFINED STLSOFT_INCLUDE_DIR)
 
 		if(BUILD_TESTING)
-			find_package(STLSoft REQUIRED)
 
+			find_package(STLSoft REQUIRED)
 		endif(BUILD_TESTING)
 
 		include_directories(${STLSOFT_INCLUDE_DIR})
+	endif()
+
+	if(DEFINED STLSOFT_INCLUDE_DIR OR DEFINED STLSoft_FOUND)
+
+		add_compile_definitions(HAS_STLSOFT)
+		add_compile_definitions(HAS_STLSoft)
 	endif()
 endif(BUILD_TESTING)
 
@@ -169,11 +175,16 @@ endif(BUILD_TESTING)
 
 if(BUILD_TESTING)
 
-	set(xTests_REQUIRED_VERSION_ 0.26.4)
+	set(xTests_REQUIRED_VERSION_ 0.28)
 
 	find_package(xTests ${xTests_REQUIRED_VERSION_} REQUIRED)
 
 	message("-- CMake package xTests found (version ${xTests_VERSION}; ${xTests_REQUIRED_VERSION_} requested)")
+
+	add_compile_definitions(
+		HAS_xTests
+		HAS_XTESTS
+	)
 endif(BUILD_TESTING)
 
 
