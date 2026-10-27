@@ -1,6 +1,12 @@
 # 2be - Changes <!-- omit in toc -->
 
 
+## 0.1.4 - 27th October 2026
+
+* Defined `HAS_xTests` and `HAS_XTESTS` when **xTests** is detected;
+* **test.scratch.versions** prints **STLSoft** under `HAS_STLSoft`;
+
+
 ## 0.1.3 - 14th October 2026
 
 * Synced tip **cmake-helpers** runners (**run_all_examples** / **scratch** / **unit**);

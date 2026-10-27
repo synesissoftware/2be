@@ -4,7 +4,7 @@
  * Purpose: Main header file for 2be (C-API).
  *
  * Created: 11th August 2025
- * Updated: 14th October 2026
+ * Updated: 27th October 2026
  *
  * Home:    https://github.com/synesissoftware/2be/
  *
@@ -50,8 +50,8 @@
 #ifndef TWOB_DOCUMENTATION_SKIP_SECTION
 # define TWOB_VER_TWOB_H_TWOB_MAJOR  0
 # define TWOB_VER_TWOB_H_TWOB_MINOR  0
-# define TWOB_VER_TWOB_H_TWOB_PATCH  13
-# define TWOB_VER_TWOB_H_TWOB_EDIT   14
+# define TWOB_VER_TWOB_H_TWOB_PATCH  14
+# define TWOB_VER_TWOB_H_TWOB_EDIT   15
 #endif /* !TWOB_DOCUMENTATION_SKIP_SECTION */
 
 
@@ -84,7 +84,7 @@
 
 #define TWOB_VER_MAJOR          0
 #define TWOB_VER_MINOR          1
-#define TWOB_VER_PATCH          3
+#define TWOB_VER_PATCH          4
 #define TWOB_VER_RELSTATUS      0xFF
 
 #define TWOB_VER \

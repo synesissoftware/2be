@@ -1,8 +1,12 @@
 
 #include <2be/2be.h>
 
-#ifdef TWOB_HAS_STLSoft
+#ifdef HAS_STLSoft
 # include <stlsoft/stlsoft.h>
+#endif
+
+#ifdef HAS_xTests
+# include <xtests/xtests.h>
 #endif
 
 #include <iomanip>
@@ -49,20 +53,39 @@ version(
 
 int main(int /* argc */, char* /* argv */[])
 {
+    int efferents_count = 0;
+
     {
         unsigned const libver = TWOB_VER;
 
         version(std::cout, "", "2be", "TWOB_VER", libver);
     }
 
-#ifdef TWOB_HAS_STLSoft
+#ifdef HAS_STLSoft
 
-    std::cout << "\n" << "efferent dependencies:" << std::endl;
+    if (0 == efferents_count++)
+    {
+        std::cout << "\n" << "efferent dependencies:" << std::endl;
+    }
 
     {
         unsigned const libver = _STLSOFT_VER;
 
         version(std::cout, "\t", "STLSoft", "_STLSOFT_VER", libver);
+    }
+#endif
+
+#ifdef HAS_xTests
+
+    if (0 == efferents_count++)
+    {
+        std::cout << "\n" << "efferent dependencies:" << std::endl;
+    }
+
+    {
+        unsigned const libver = _XTESTS_VER;
+
+        version(std::cout, "\t", "xTests", "_XTESTS_VER", libver);
     }
 #endif
 
