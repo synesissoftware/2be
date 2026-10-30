@@ -5,7 +5,7 @@
 # Purpose:  Top-level CMake lists file for 2be
 #
 # Created:  11th August 2025
-# Updated:  26th October 2026
+# Updated:  30th October 2026
 #
 # ######################################################################## #
 
@@ -175,7 +175,7 @@ endif(BUILD_TESTING)
 
 if(BUILD_TESTING)
 
-	set(xTests_REQUIRED_VERSION_ 0.28)
+	set(xTests_REQUIRED_VERSION_ 0.28.2)
 
 	find_package(xTests ${xTests_REQUIRED_VERSION_} REQUIRED)
 
