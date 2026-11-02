@@ -1,6 +1,11 @@
 # 2be - Changes <!-- omit in toc -->
 
 
+## 0.1.6 - 2nd November 2026
+
+* build:
+  * **STLSoft** minimum is **1.11.5**;
+
 ## 0.1.5 - 1st November 2026
 
 * testing:
