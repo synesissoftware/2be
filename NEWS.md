@@ -6,6 +6,7 @@
 
 | Date                  | News Item                                                                   | Details |
 | --------------------- | --------------------------------------------------------------------------- | ------- |
+| 6th November 2026     | [0.1.7 released](https://github.com/synesissoftware/2be/releases/tag/0.1.7) | CI installs **woad** before **xTests** |
 | 2nd November 2026     | [0.1.6 released](https://github.com/synesissoftware/2be/releases/tag/0.1.6) | **STLSoft** **1.11.5** |
 | 1st November 2026     | [0.1.5 released](https://github.com/synesissoftware/2be/releases/tag/0.1.5) | `File:` labels; `__FILE__` runners (**xTests** 0.28.2); **Check test names** |
 | 27th October 2026     | [0.1.4 released](https://github.com/synesissoftware/2be/releases/tag/0.1.4) | `HAS_xTests` / `HAS_XTESTS`; **STLSoft** under `HAS_STLSoft` |
