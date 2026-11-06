@@ -59,7 +59,8 @@ jobs:
 
       # Dependency order is deliberate (not lexicographic): each package
       # configures against those already installed in the shared prefix.
-      # shwild precedes xTests. TinyCC cells skip deps (library-only).
+      # woad precedes xTests (xTests 0.29 requires it); shwild precedes
+      # xTests. TinyCC cells skip deps (library-only).
       - name: Install SIS dependencies
         if: inputs.run-tests
         uses: ./.github/actions/install-sis-deps
@@ -67,7 +68,7 @@ jobs:
           build-type: ${{ inputs.build-type }}
           c-compiler: ${{ inputs.c-compiler == 'mingw' && 'gcc' || inputs.c-compiler }}
           cpp-compiler: ${{ inputs.c-compiler == 'mingw' && 'g++' || inputs.cpp-compiler }}
-          dependencies: STLSoft shwild xTests
+          dependencies: STLSoft shwild woad xTests
           toolchain: ${{ inputs.c-compiler == 'mingw' && 'mingw' || '' }}
 
       - name: Configure

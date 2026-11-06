@@ -1,6 +1,12 @@
 # 2be - Changes <!-- omit in toc -->
 
 
+## 0.1.7 - 6th November 2026
+
+* build:
+  * CI installs **woad** before **xTests**, which **xTests** 0.29 requires;
+
+
 ## 0.1.6 - 2nd November 2026
 
 * build:
